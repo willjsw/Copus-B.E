@@ -26,12 +26,12 @@ class BookNameSearchServiceTest {
         String testItem2 = "조성가";
         String testItem3 = "趙性家";
 
-        ArrayList<ArrayList<String>> id1 = bookNameService.searchLv1ByItemName("가");
-        ArrayList<ArrayList<String>> id2 = bookNameService.searchLv1ByItemName("아");
-        ArrayList<ArrayList<String>> id3 = bookNameService.searchLv1ByItemName("자");
-        ArrayList<ArrayList<String>> id4 = bookNameService.searchLv1ByItemName("힣");
-        ArrayList<ArrayList<String>> id5 = bookNameService.searchLv1ByItemName("a");
-        ArrayList<ArrayList<String>> id6 = bookNameService.searchLv1ByAuthorName(testItem2);
+        Lv1SearchDTO id1 = bookNameService.searchLv1ByConsonant("가");
+        Lv1SearchDTO id2 = bookNameService.searchLv1ByConsonant("아");
+        Lv1SearchDTO id3 = bookNameService.searchLv1ByConsonant("자");
+        Lv1SearchDTO id4 = bookNameService.searchLv1ByConsonant("힣");
+        Lv1SearchDTO id5 = bookNameService.searchLv1ByConsonant("a");
+        Lv1SearchDTO id6 = bookNameService.searchLv1ByAuthorName(testItem2);
 //        ArrayList<ArrayList<String>> id3 = bookNameSearchService.searchLv1ByAuthorName(testItem3);
 
 

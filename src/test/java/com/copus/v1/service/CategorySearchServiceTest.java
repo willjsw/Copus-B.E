@@ -23,11 +23,11 @@ public class CategorySearchServiceTest {
 
     @Test
     void Category() {
-        ArrayList<ArrayList<String>>result1_1 = categoryService.searchByBookName("월고집");
-        ArrayList<ArrayList<String>>result1_2 = categoryService.searchByBookName("매계집");
-        ArrayList<ArrayList<String>>result2_1 = categoryService.searchByAuthorName("조성가");
-        ArrayList<ArrayList<String>>result2_2 = categoryService.searchByAuthorName("趙性家");
-        ArrayList<ArrayList<String>>result2_3 = categoryService.searchByAuthorName("정몽주");
+        Lv1SearchDTO result1_1 = categoryService.searchByBookName("월고집");
+        Lv1SearchDTO result1_2 = categoryService.searchByBookName("매계집");
+        Lv1SearchDTO result2_1 = categoryService.searchByAuthorName("조성가");
+        Lv1SearchDTO result2_2 = categoryService.searchByAuthorName("趙性家");
+        Lv1SearchDTO result2_3 = categoryService.searchByAuthorName("정몽주");
 
         System.out.println("결과1_1:"+ result1_1);
         System.out.println("결과1_2:"+ result1_2);

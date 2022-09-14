@@ -20,7 +20,7 @@ public class GwonchaSearchServiceTest {
     @Test
     public void GwonchaSearch(){
 
-        ArrayList<ArrayList<String>> lv2 = gwonchaService.searchLv2ByLv1Id("ITKC_MO_1237A");
+        ArrayList<ArrayList<String>> lv2 = gwonchaService.searchLv2ByLv1Id("月皐集");
 
         System.out.println("결과:"+ lv2);
     }

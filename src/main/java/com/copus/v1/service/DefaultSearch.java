@@ -5,12 +5,11 @@ import com.copus.v1.repository.info.meta.PublishInfoRepository;
 import com.copus.v1.repository.info.meta.TitleRepository;
 import com.copus.v1.repository.level.Lv1Repository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+
 @RequiredArgsConstructor
 public class DefaultSearch {
 
@@ -19,52 +18,55 @@ public class DefaultSearch {
     public final AuthorRepository authorRepository;
     public final PublishInfoRepository publishInfoRepository ;
 
-    public ArrayList<ArrayList<String>> searchByKeyWord(List<String>lv1IdList, int listLength){
-
-        ArrayList<ArrayList<String>> result = new ArrayList<>();
-        ArrayList<String> caseNum = new ArrayList<>();
-        ArrayList<String> caseLv1Id = new ArrayList<>();
-        ArrayList<String> caseLv1Title = new ArrayList<>();
-        ArrayList<String> caseAuthor = new ArrayList<>();
-        ArrayList<String> casezipsuStart = new ArrayList<>();
-        ArrayList<String> casezipsuEnd = new ArrayList<>();
-        ArrayList<String> caseOriginalPublishYear = new ArrayList<>();
 
 
-        caseNum.add(String.valueOf(listLength));
 
-        if(listLength==0) {
-            result.add(caseNum);
-        }else{
-            for (int i=0; i<listLength; i++) {
-                String authorChn = authorRepository.findAuthorNameByLv1Id(lv1IdList.get(i)).get(0).getNameChn();
-                String authorKor = authorRepository.findAuthorNameByLv1Id(lv1IdList.get(i)).get(0).getNameKor();
-                String zipsuStart = publishInfoRepository.findPublishInfoByLv1Id(lv1IdList.get(i)).get(0).getZipsuStart();
-                String zipsuEnd = publishInfoRepository.findPublishInfoByLv1Id(lv1IdList.get(i)).get(0).getZipsuEnd();
-                String originalPublishYear = publishInfoRepository.findPublishInfoByLv1Id(lv1IdList.get(i)).get(0).getOriginalPublishYear();
-                //Entity 수정 필요할지도
-                for (int j = 0; j < titleRepository.findLv1TitleByLv1Id(lv1IdList.get(i)).toArray().length; j++) {
-                    caseLv1Title.add(titleRepository.findLv1TitleByLv1Id(lv1IdList.get(i)).get(j).getTitleText());
-                }
-                //항목별 배열화
-                caseLv1Id.add(lv1IdList.get(i));
-                caseAuthor.add(authorChn);
-                caseAuthor.add(authorKor);
-                casezipsuStart.add(zipsuStart);
-                casezipsuEnd.add(zipsuEnd);
-                caseOriginalPublishYear.add(originalPublishYear);
+
+    public Lv1SearchDTO searchByKeyWord(List<String>lv1IdList) {
+
+        Lv1SearchDTO lv1SearchDTO = new Lv1SearchDTO();
+
+        int caseNum = lv1IdList.toArray().length;
+        lv1SearchDTO.setSearchNum(caseNum);
+
+        if (caseNum != 0) {
+
+            List<String> lv1Id = new ArrayList<>();
+            List<String> lv1TitleChn = new ArrayList<>();
+            List<String> lv1TitleKor = new ArrayList<>();
+            List<String> authorChn = new ArrayList<>();
+            List<String> authorKor = new ArrayList<>();
+            List<String> zipsuStart = new ArrayList<>();
+            List<String> zipsuEnd = new ArrayList<>();
+            List<String> originalPublishYear = new ArrayList<>();
+
+
+            for (String id : lv1IdList) {
+                lv1Id.add(id);
+                lv1TitleChn.add(titleRepository.findLv1TitleByLv1Id(id).get(0).getTitleText());
+                lv1TitleKor.add(titleRepository.findLv1TitleByLv1Id(id).get(1).getTitleText());
+                authorChn.add(authorRepository.findAuthorNameByLv1Id(id).get(0).getNameChn());
+                authorKor.add(authorRepository.findAuthorNameByLv1Id(id).get(0).getNameKor());
+                zipsuStart.add(publishInfoRepository.findPublishInfoByLv1Id(id).get(0).getZipsuStart());
+                zipsuEnd.add(publishInfoRepository.findPublishInfoByLv1Id(id).get(0).getZipsuEnd());
+                originalPublishYear.add(publishInfoRepository.findPublishInfoByLv1Id(id).get(0).getOriginalPublishYear());
+
             }
-            //항목3 저자명(한자/한글)
-            result.add(caseNum);
-            result.add(caseLv1Id);
-            result.add(caseLv1Title);
-            result.add(caseAuthor);
-            result.add(casezipsuStart);
-            result.add(casezipsuEnd);
-            result.add(caseOriginalPublishYear);
+            lv1SearchDTO.setLv1Id(lv1Id);
+            lv1SearchDTO.setLv1TitleChn(lv1TitleChn);
+            lv1SearchDTO.setLv1TitleKor(lv1TitleKor);
+            lv1SearchDTO.setAuthorChn(authorChn);
+            lv1SearchDTO.setAuthorKor(authorKor);
+            lv1SearchDTO.setZipsuStart(zipsuStart);
+            lv1SearchDTO.setZipsuEnd((zipsuEnd));
+            lv1SearchDTO.setOriginalPublishYear(originalPublishYear);
+
         }
-        return result;
+        return lv1SearchDTO;
     }
+
+
+
 
     public ArrayList<String> consonantRange(String consonant){
         final ArrayList<String> consonantList = new ArrayList<>();

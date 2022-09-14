@@ -23,14 +23,14 @@ public class FinalInfoService {
     private final ContentRepository contentRepository;
 
 
-    public ArrayList<ArrayList<String>> searchLv4ByLv3Id(String id){
+    public ArrayList<ArrayList<String>> searchLv4ByLv3Id(String id1, String id2){
         ArrayList<String> searchNum = new ArrayList<>();
         ArrayList<String> idList = new ArrayList<>();
         ArrayList<String> titleList = new ArrayList<>();
         ArrayList<ArrayList<String>> result = new ArrayList<>();
 
-        List<Lv4> lvList = lv4Repository.findLv4ByLv3Id(id);
-        List<Title> TitleList = titleRepository.findLv4TitleByLv3Id(id);
+        List<Lv4> lvList = lv4Repository.findLv4ByLv3Title(id1, id2);
+        List<Title> TitleList = titleRepository.findLv4TitleByLv3Id(id2);
 
         int lvListLength = lvList.toArray().length;
         int TitleListLength = TitleList.toArray().length;
@@ -40,16 +40,16 @@ public class FinalInfoService {
 
         if (lvListLength != 0) {
             for (int i = 0; i < lvListLength; i++) {
-                idList.add(lvList.get(i).getId());
+                idList.add(lvList.get(i).getId() + "\n");
             }
 
             for (int i = 0; i < TitleListLength; i++) {
                 titleList.add(TitleList.get(i).getTitleText());
             }
-
             result.add(idList);
             result.add(titleList);
         }
+
         return result;
     }
 

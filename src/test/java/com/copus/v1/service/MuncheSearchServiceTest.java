@@ -20,7 +20,7 @@ public class MuncheSearchServiceTest {
 
     @Test
     void MuncheSearch(){
-        ArrayList<ArrayList<String>> lv3 = muncheService.searchLv3ByLv2Id("ITKC_MO_1237A_0120");
+        ArrayList<ArrayList<String>> lv3 = muncheService.searchLv3ByLv2Id("月皐先生文集卷之五");
 
         System.out.println("결과:"+ lv3);
     }

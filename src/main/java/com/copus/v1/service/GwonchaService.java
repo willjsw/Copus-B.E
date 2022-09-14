@@ -26,7 +26,7 @@ public class GwonchaService {
         ArrayList<String> titleList = new ArrayList<>();
         ArrayList<ArrayList<String>> result = new ArrayList<>();
 
-        List<Lv2> lvList = lv2Repository.findLv2ByLv1Id(id);
+        List<Lv2> lvList = lv2Repository.findLv2ByLv1Title(id);
         List<Title> TitleList = titleRepository.findLv2TitleByLv1Id(id);
 
         int lvListLength = lvList.toArray().length;

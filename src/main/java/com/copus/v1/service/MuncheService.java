@@ -25,7 +25,7 @@ public class MuncheService {
         ArrayList<String> titleList = new ArrayList<>();
         ArrayList<ArrayList<String>> result = new ArrayList<>();
 
-        List<Lv3>lvList=lv3Repository.findLv3ByLv2Id(id);
+        List<Lv3>lvList=lv3Repository.findLv3ByLv2Title(id);
         List<Title>TitleList=titleRepository.findLv3TitleByLv2Id(id);
 
         int lvListLength = lvList.toArray().length;

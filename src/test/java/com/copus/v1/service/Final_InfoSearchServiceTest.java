@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SpringBootTest
 @Transactional
-public class FinalInfoSearchServiceTest {
+public class Final_InfoSearchServiceTest {
 
     @Autowired
     FinalInfoService finalInfoService;
@@ -20,11 +20,11 @@ public class FinalInfoSearchServiceTest {
 
     @Test
     void TitleSearch(){
-        ArrayList<ArrayList<String>> lv4 = finalInfoService.searchLv4ByLv3Id("ITKC_MO_1237A_0020_010");
-        String content = finalInfoService.searchLv4ContentByLv4Id("ITKC_MO_1237A_0020_010_0010");
+        ArrayList<ArrayList<String>> lv4 = finalInfoService.searchLv4ByLv3Id("月皐先生文集卷之一", "詩");
+       // String content = finalInfoService.searchLv4ContentByLv4Id("ITKC_MO_1237A_0020_010_0010");
 
         System.out.println("결과:"+ lv4);
-        System.out.println("본문:"+ content);
+       // System.out.println("본문:"+ content);
 
     }
 }

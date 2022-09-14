@@ -11,7 +11,6 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 public class CategoryService extends DefaultSearch {
 
@@ -29,7 +28,7 @@ public class CategoryService extends DefaultSearch {
         );
     }
     @Transactional
-    public ArrayList<ArrayList<String>> searchByCategory(List<Lv1> lv1List){
+    public Lv1SearchDTO searchByCategory(List<Lv1> lv1List){
         List<String>lv1IdList = new ArrayList<>();
         int listLength = lv1List.toArray().length;
         for (int i=0; i<listLength; i++) {
@@ -37,18 +36,18 @@ public class CategoryService extends DefaultSearch {
             lv1IdList.add(lv1Id);
         }
 
-        return searchByKeyWord(lv1IdList, listLength);
+        return searchByKeyWord(lv1IdList);
     }
 
 
     @Transactional
-    public ArrayList<ArrayList<String>> searchByBookName(String bookName){
+    public Lv1SearchDTO searchByBookName(String bookName){
         List<Lv1> lv1List = lv1Repository.findLv1ByLv1Title(bookName);
         return searchByCategory(lv1List);
     }
 
     @Transactional
-    public ArrayList<ArrayList<String>> searchByAuthorName(String authorName) {
+    public Lv1SearchDTO searchByAuthorName(String authorName) {
         List<Lv1> lv1List = lv1Repository.findLv1ByAuthorName(authorName);
         return searchByCategory(lv1List);
     }

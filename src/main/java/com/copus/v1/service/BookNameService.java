@@ -30,30 +30,27 @@ public class BookNameService extends DefaultSearch {
     }
 
     @Transactional
-    public ArrayList<ArrayList<String>> searchLv1ByItemName(String consonant) {
+    public Lv1SearchDTO searchLv1ByConsonant(String consonant) {
         List<String> lv1IdList = new ArrayList<>();
         String consonant1 = consonantRange(consonant).get(0);
         String consonant2 = consonantRange(consonant).get(1);
 
         List<Lv1> lv1list = lv1Repository.findLv1ByConsonant(consonant1, consonant2);
-        int listLength = lv1list.toArray().length;
-        for (int i = 0; i < listLength; i++) {
-            String lv1Id = lv1list.get(i).getId();
+        for (Lv1 lv1 : lv1list) {
+            String lv1Id = lv1.getId();
             lv1IdList.add(lv1Id);
         }
-
-        return searchByKeyWord(lv1IdList, listLength);
+        return searchByKeyWord(lv1IdList);
     }
 
     @Transactional
-    public ArrayList<ArrayList<String>> searchLv1ByAuthorName(String author){
+    public Lv1SearchDTO searchLv1ByAuthorName(String author){
         List<String>lv1IdList = new ArrayList<>();
         List<Lv1>lv1list=lv1Repository.findLv1ByAuthorName(author);
-        int listLength = lv1list.toArray().length;
-        for(int i=0; i<listLength;i++){
-            String lv1Id = lv1list.get(i).getId();
+        for (Lv1 lv1 : lv1list) {
+            String lv1Id = lv1.getId();
             lv1IdList.add(lv1Id);
         }
-        return searchByKeyWord(lv1IdList, listLength);
+        return searchByKeyWord(lv1IdList);
     }
 }
