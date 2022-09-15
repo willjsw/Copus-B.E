@@ -18,10 +18,6 @@ public class DefaultSearch {
     public final AuthorRepository authorRepository;
     public final PublishInfoRepository publishInfoRepository ;
 
-
-
-
-
     public Lv1SearchDTO searchByKeyWord(List<String>lv1IdList) {
 
         Lv1SearchDTO lv1SearchDTO = new Lv1SearchDTO();
@@ -64,8 +60,6 @@ public class DefaultSearch {
         }
         return lv1SearchDTO;
     }
-
-
 
 
     public ArrayList<String> consonantRange(String consonant){
