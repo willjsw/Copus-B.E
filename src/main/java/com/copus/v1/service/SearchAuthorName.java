@@ -4,42 +4,31 @@ package com.copus.v1.service;
 
 import com.copus.v1.domain.info.meta.Author;
 import com.copus.v1.repository.info.meta.AuthorRepository;
-import com.copus.v1.repository.info.meta.PublishInfoRepository;
-import com.copus.v1.repository.info.meta.TitleRepository;
-import com.copus.v1.repository.level.Lv1Repository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AuthorNameService extends DefaultSearch {
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class SearchAuthorName implements ConsonantRangeSet {
 
-    //부모 클래스 CategorySearch 생성자 상속
-    public AuthorNameService(
-            Lv1Repository lv1Repository,
-            TitleRepository titleRepository,
-            AuthorRepository authorRepository,
-            PublishInfoRepository publishInfoRepository) {
-        super(
-                lv1Repository,
-                titleRepository,
-                authorRepository,
-                publishInfoRepository
-        );
-    }
+    public final AuthorRepository authorRepository;
 
     //Lv1 서지명 입력, Id 반환
-    @Transactional
+
     public ArrayList<ArrayList<String>> searchAuthorNameByItemName(String consonant){
         ArrayList<ArrayList<String>> resultList = new ArrayList<>();
         ArrayList<String> searchNum = new ArrayList<>();
         ArrayList<String> nameKor = new ArrayList<>();
         ArrayList<String> nameChn = new ArrayList<>();
 
-        String consonant1 = consonantRange(consonant).get(0);
-        String consonant2 = consonantRange(consonant).get(1);
+        String consonant1 = ConsonantRangeSet.consonantRange(consonant).get(0);
+        String consonant2 = ConsonantRangeSet.consonantRange(consonant).get(1);
 
         List<Author> authorList=authorRepository.findAuthorNameByConsonant(consonant1, consonant2);
 

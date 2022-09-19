@@ -1,6 +1,8 @@
 package com.copus.v1.service;
 
 import com.copus.v1.repository.level.Lv3Repository;
+import com.copus.v1.service.dto.show.ShowLv3Dto;
+import com.copus.v1.service.show.ShowMuncheService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,13 +16,11 @@ import java.util.ArrayList;
 public class MuncheSearchServiceTest {
 
     @Autowired
-    MuncheService muncheService;
-    @Autowired
-    Lv3Repository lv3Repository;
+    ShowMuncheService showMuncheService;
 
     @Test
-    void MuncheSearch(){
-        ArrayList<ArrayList<String>> lv3 = muncheService.searchLv3ByLv2Id("月皐先生文集卷之五");
+    void showMunche(){
+        ArrayList<ShowLv3Dto> lv3 = showMuncheService.searchLv3ByLv2Id("ITKC_MO_1237A_0010");
 
         System.out.println("결과:"+ lv3);
     }

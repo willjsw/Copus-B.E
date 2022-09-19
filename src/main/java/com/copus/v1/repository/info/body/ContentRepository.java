@@ -12,10 +12,16 @@ public class ContentRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Content> findLv4ContentByTitleId(String id) {
-        return em.createQuery("select c from Content c " +
-                        "where c.bodyInfo = (select l.bodyInfo from Lv4 l where l.id = :id)", Content.class)
-                .setParameter("id", id)
+    public List<Content> findLv4ContentByLv4Id(String level_4_Id) {
+        return em.createQuery("select c from Content c join Lv4 l4  " +
+                        "on l4.bodyInfo = c.bodyInfo and l4.id =:level_4_Id", Content.class)
+                .setParameter("level_4_Id", level_4_Id)
+                .getResultList();
+    }
+
+    public List<Content> findLv4ContentByContentText(String contentText) {
+        return em.createQuery("select c from Content c where c.contentText like concat('%',:contentText,'%')", Content.class)
+                .setParameter("contentText", contentText)
                 .getResultList();
     }
 }

@@ -11,7 +11,6 @@ import java.util.List;
 
 @SpringBootTest
 @Repository
-
 public class TitleRepositoryTest {
 
     @PersistenceContext

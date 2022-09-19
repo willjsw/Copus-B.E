@@ -1,6 +1,8 @@
 package com.copus.v1.service;
 
 import com.copus.v1.repository.level.Lv2Repository;
+import com.copus.v1.service.dto.show.ShowLv2Dto;
+import com.copus.v1.service.show.ShowGwonchaService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,15 +15,16 @@ import java.util.ArrayList;
 public class GwonchaSearchServiceTest {
 
     @Autowired
-    GwonchaService gwonchaService;
+    ShowGwonchaService showGwonchaService;
     @Autowired
     Lv2Repository lv2Repository;
 
     @Test
     public void GwonchaSearch(){
 
-        ArrayList<ArrayList<String>> lv2 = gwonchaService.searchLv2ByLv1Id("月皐集");
+        ArrayList<ShowLv2Dto> lv2 = showGwonchaService.searchLv2ByLv1Id("月皐集");
 
         System.out.println("결과:"+ lv2);
+        System.out.println("결과:"+ lv2.get(0).getLv2Id());
     }
 }

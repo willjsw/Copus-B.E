@@ -13,24 +13,26 @@ public class Lv1Repository {
     private EntityManager em;
 
     public List<Lv1> findLv1ByConsonant(String consonant1, String consonant2) {
-        return em.createQuery("select l from Lv1 l join l.metaInfo ti " +
-                        "where ti.id = any(select t.titleInfo.id from Title t " +
-                        "where t.type = '한글서명' and substring(t.titleText,1,1) between :consonant1 AND :consonant2)", Lv1.class)
+        return em.createQuery("select l1 from Lv1 l1 join l1.metaInfo ti " +
+                        "join Title as t on ti.id = t.titleInfo.id " +
+                        "where t.type = '한글서명' and substring(t.titleText,1,1) between :consonant1 AND :consonant2", Lv1.class)
                 .setParameter("consonant1", consonant1)
                 .setParameter("consonant2", consonant2)
                 .getResultList();
     }
     public List<Lv1> findLv1ByAuthorName(String authorname) {
-        return em.createQuery("select l from Lv1 l join l.metaInfo ai " +
-                        "where ai.id = any(select a.authorInfo.id from Author a where a.nameKor = :authorname or a.nameChn = :authorname)", Lv1.class)
+        return em.createQuery("select l1 from Lv1 l1 join l1.metaInfo ai " +
+                        "join Author as a on a.authorInfo = ai " +
+                        "where a.nameKor = :authorname or a.nameChn = :authorname", Lv1.class)
                 .setParameter("authorname", authorname)
                 .getResultList();
     }
 
-    public List<Lv1> findLv1ByLv1Title(String title) {
-        return em.createQuery("select l from Lv1 l join l.metaInfo ti " +
-                        "where ti.id = any(select t.titleInfo.id from Title t where t.titleText =: title)", Lv1.class)
-                .setParameter("title", title)
+    public List<Lv1> findLv1ByLv1Title(String level_1_Title) {
+        return em.createQuery("select l1 from Lv1 l1 join l1.metaInfo ti " +
+                        "join Title as t on ti.id = t.titleInfo.id " +
+                        "where t.titleText like concat('%',:level_1_Title,'%')", Lv1.class)
+                .setParameter("level_1_Title", level_1_Title)
                 .getResultList();
     }
 

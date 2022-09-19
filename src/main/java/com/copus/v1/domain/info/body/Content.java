@@ -19,7 +19,7 @@ public class Content {
     private String contentText;
 
     @OneToOne
-    @JoinColumn(name = "body_info_id")
+    @JoinColumn(name = "body_info")
     private BodyInfo bodyInfo;
 
     public Content(String contentText, BodyInfo bodyInfo) {
