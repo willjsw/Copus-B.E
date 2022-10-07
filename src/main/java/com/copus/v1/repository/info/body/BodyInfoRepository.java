@@ -7,25 +7,25 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
-public class BodyInfoRepository {
-    @PersistenceContext
-    private EntityManager em;
-
-    public BodyInfo findOne (Long id){
-        return em.find(BodyInfo.class, id);
-    }
-
-    public List<BodyInfo> findAll(Long id){
-        return em.createQuery("select b from BodyInfo b", BodyInfo.class)
-                .getResultList();
-    }
-
-    public List<BodyInfo> findByContent(String content){
-        return em.createQuery("select b from BodyInfo b where b.content = :content", BodyInfo.class)
-                .setParameter("content",content)
-                .getResultList();
-    }
-}
+//@Repository
+//public class BodyInfoRepository {
+//    @PersistenceContext
+//    private EntityManager em;
+//
+//    public BodyInfo findOne (Long id){
+//        return em.find(BodyInfo.class, id);
+//    }
+//
+//    public List<BodyInfo> findAll(Long id){
+//        return em.createQuery("select b from BodyInfo b", BodyInfo.class)
+//                .getResultList();
+//    }
+//
+//    public List<BodyInfo> findByContent(String content){
+//        return em.createQuery("select b from BodyInfo b where b.content = :content", BodyInfo.class)
+//                .setParameter("content",content)
+//                .getResultList();
+//    }
+//}
 
 

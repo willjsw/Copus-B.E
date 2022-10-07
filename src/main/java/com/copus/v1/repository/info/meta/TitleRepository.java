@@ -2,6 +2,7 @@ package com.copus.v1.repository.info.meta;
 
 
 import com.copus.v1.domain.info.meta.Title;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,10 +10,28 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-
+@RequiredArgsConstructor
 public class TitleRepository {
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
+
+    public List<Title> findAllLv3Title(){
+        return em.createQuery("select t from Title t" +
+                " inner join TitleInfo ti on t.titleInfo = ti" +
+                " inner join MetaInfo mi on ti.metaInfo = mi" +
+                " inner join Lv3 l3 on l3.metaInfo = mi ",Title.class).getResultList();
+    }
+
+
+    public List<Title> findTitleByMetaInfoId(Long metaInfoId) {
+        return em.createQuery("""
+                        select t from Title t
+                        inner join TitleInfo ti on t.titleInfo = ti
+                        inner join MetaInfo mi on ti.metaInfo = mi
+                        where mi.id = :metaInfoId
+                        """, Title.class)
+                .setParameter("metaInfoId", metaInfoId)
+                .getResultList();
+    }
 
     //동일레벨
 

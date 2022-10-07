@@ -21,7 +21,7 @@ public class ReferBody {
     @Enumerated(value = EnumType.STRING)
     private BodyType type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "refer_to_id")
     private ReferTo referTo;
 

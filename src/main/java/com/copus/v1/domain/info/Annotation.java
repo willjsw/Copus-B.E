@@ -28,7 +28,7 @@ public class Annotation {
     @Enumerated(value = EnumType.STRING)
     private AnnotationType type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "annotation_info_id")
     private AnnotationInfo annotationInfo;
 

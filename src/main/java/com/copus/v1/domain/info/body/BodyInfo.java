@@ -14,6 +14,6 @@ import javax.persistence.*;
 public class BodyInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "body_info")
+    @Column(name = "body_info_id")
     private Long id;
 }

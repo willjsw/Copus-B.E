@@ -16,7 +16,7 @@ public class Reading {
     @Column(name = "reading_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reading_info_id")
     private ReadingInfo readingInfo;
 

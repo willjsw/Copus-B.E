@@ -21,7 +21,7 @@ public class Connection {
     @Enumerated(value = EnumType.STRING)
     private ConnectionType type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "connection_info_id")
     private ConnectionInfo connectionInfo;
 

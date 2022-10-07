@@ -20,23 +20,23 @@ public class Commentary {
     @Enumerated(EnumType.STRING)
     private CommentType commentType;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "annotation_info_id")
     private AnnotationInfo annotationInfo;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "body_info_id")
     private BodyInfo bodyInfo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "commentary_info_id")
     private CommentaryInfo commentaryInfo;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "connection_info_id")
     private ConnectionInfo connectionInfo;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 
