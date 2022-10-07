@@ -22,7 +22,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ShowSeojiInfo {
+public class SeojiService {
 
     private final Lv1Repository lv1Repository;
     private final AuthorRepository authorRepository;

@@ -9,7 +9,6 @@ import com.copus.v1.repository.level.Lv4Repository;
 import com.copus.v1.service.GetMetaInfo;
 import com.copus.v1.service.serviceDto.articleDto.showDto.FinalsDto;
 import com.copus.v1.service.serviceDto.articleDto.showDto.MuncheInfoDto;
-import com.copus.v1.service.serviceDto.showDto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +19,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ShowMuncheInfo {
+public class MuncheService {
 
     private final Lv3Repository lv3Repository;
     private final Lv4Repository lv4Repository;

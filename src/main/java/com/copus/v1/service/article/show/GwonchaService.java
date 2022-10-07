@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ShowGwonchaInfo {
+public class GwonchaService {
 
     private final Lv2Repository lv2Repository;
     private final Lv3Repository lv3Repository;

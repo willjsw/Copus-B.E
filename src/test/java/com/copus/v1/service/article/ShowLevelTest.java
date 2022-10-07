@@ -1,8 +1,8 @@
 package com.copus.v1.service.article;
 
-import com.copus.v1.service.article.show.ShowFinalInfo;
-import com.copus.v1.service.article.show.ShowGwonchaInfo;
-import com.copus.v1.service.article.show.ShowMuncheInfo;
+import com.copus.v1.service.article.show.FinalService;
+import com.copus.v1.service.article.show.GwonchaService;
+import com.copus.v1.service.article.show.MuncheService;
 import com.copus.v1.service.article.show.ShowTotalGwonchaInfo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,11 @@ class ShowLevelTest {
     @Autowired
     private ShowTotalGwonchaInfo showTotalGwonchaInfo;
     @Autowired
-    private ShowGwonchaInfo showGwonchaInfo;
+    private GwonchaService showGwonchaInfo;
     @Autowired
-    private ShowMuncheInfo showMuncheInfo;
+    private MuncheService showMuncheInfo;
     @Autowired
-    private ShowFinalInfo showFinalInfo;
+    private FinalService showFinalInfo;
 
         @Test
         void showLevel(){

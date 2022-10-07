@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PreviewRequest {
-    private SearchFilter filter;
+    private String filter;
     private String keyword;
 }

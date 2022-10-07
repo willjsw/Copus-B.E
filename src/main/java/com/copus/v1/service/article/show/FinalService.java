@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ShowFinalInfo {
+public class FinalService {
 
     private final Lv4Repository lv4Repository;
     private final ContentRepository contentRepository;

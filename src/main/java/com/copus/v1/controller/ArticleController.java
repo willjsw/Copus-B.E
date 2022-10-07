@@ -1,6 +1,13 @@
 package com.copus.v1.controller;
 
 import com.copus.v1.controller.dto.*;
+import com.copus.v1.service.article.search.SearchPreview;
+import com.copus.v1.service.article.show.FinalService;
+import com.copus.v1.service.article.show.GwonchaService;
+import com.copus.v1.service.article.show.MuncheService;
+import com.copus.v1.service.article.show.SeojiService;
+import com.copus.v1.service.enums.SearchFilter;
+import com.copus.v1.service.serviceDto.articleDto.searchDto.SearchPreviewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,35 +15,16 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/article")
 public class ArticleController {
+    private final SearchPreview searchPreview;
+    private final SeojiService seojiService;
+    private final GwonchaService gwonchaService;
+    private final MuncheService muncheService;
+    private final FinalService finalService;
 
     @GetMapping("/preview")
     public PreviewResponse getPreview(@ModelAttribute PreviewRequest previewRequest) {
-        PreviewResponse previewResponse = new PreviewResponse();
-
-        /**
-         * Data For Search Result Article
-         * @param Filter == 검색 필터 (total || bookTitle || authorName || gwonchaTitle || muncheTitle || content || dataId)
-         * @param keyword == 검색어
-         * @return {
-         * 	"count":'',
-         * 	"datas":[
-         *                {
-         * 			"seojiId":'',
-         * 			"seojiTitle": '',
-         * 			"authorName": '',
-         * 			"publishYear":'',
-         * 			"gwonchaId": '',  - if needContent is false, null
-         * 			"gwonchaTitle": '권차명',  - if needContent is false, null
-         * 			"muncheId": '',  - if needContent is false, null
-         * 			"muncheTitle": '문체명',  - if needContent is false, null
-         * 			"finalId":'', - if needContent is false, null
-         * 			"finalTitle":'최종정보 제목', - if needContent is false, null
-         * 			"contentPartition": '본문일부', //최대 200자  - if needContent is false, null
-         *        },...
-         * } if some field is null, make the block blanck
-         */
-
-        return previewResponse;
+        SearchPreviewDto previewDto = searchPreview.getPreview(SearchFilter.valueOf(previewRequest.getFilter()), previewRequest.getKeyword());
+        return new PreviewResponse(previewDto);
     }
 
     @GetMapping("/seoji")

@@ -2,7 +2,7 @@ package com.copus.v1.service.article;
 
 import com.copus.v1.service.enums.SeojiKeyword;
 import com.copus.v1.service.enums.SeojiOrdering;
-import com.copus.v1.service.article.show.ShowSeojiInfo;
+import com.copus.v1.service.article.show.SeojiService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 class ShowSeojiInfoTest {
 
     @Autowired
-    private ShowSeojiInfo showSeojiInfo;
+    private SeojiService showSeojiInfo;
 
     private SeojiKeyword seojiKeyword;
 
