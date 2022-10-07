@@ -30,7 +30,7 @@ public class Author {
     @Enumerated(value = EnumType.STRING)
     private NickNameType nickNameType;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_info_id")
     private AuthorInfo authorInfo;
 
@@ -45,5 +45,11 @@ public class Author {
         this.nickName = nickName;
         this.nickNameType = nickNameType;
         this.authorInfo = authorInfo;
+    }
+
+    public String concatNameKorAndChn() {
+        if(nameKor == null) return nameChn;
+        if(nameChn == null) return nameKor;
+        return nameKor + "(" + nameChn + ")";
     }
 }

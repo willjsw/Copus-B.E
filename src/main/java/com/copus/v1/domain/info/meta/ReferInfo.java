@@ -23,9 +23,12 @@ public class ReferInfo {
     @OneToMany(mappedBy = "referInfo")
     private List<ReferTo> referToes = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
+
+    @OneToMany(mappedBy = "referInfo")
+    private List<ReferTo> referTo = new ArrayList<>();
 
     public ReferInfo(MetaInfo metaInfo) {
         this.metaInfo = metaInfo;

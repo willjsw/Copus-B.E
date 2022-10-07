@@ -22,9 +22,12 @@ public class AuthorInfo {
     @Enumerated(value = EnumType.STRING)
     private AuthorType type;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
+
+    @OneToOne(mappedBy = "authorInfo")
+    private Author author;
 
     public AuthorInfo(AuthorType type, MetaInfo metaInfo) {
         this.type = type;

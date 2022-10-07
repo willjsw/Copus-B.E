@@ -26,7 +26,7 @@ public class Title {
     //날씨,,,? 일단 String
     private String weather;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "title_info_id")
     private TitleInfo titleInfo;
 

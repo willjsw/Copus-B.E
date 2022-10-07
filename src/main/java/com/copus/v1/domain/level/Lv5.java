@@ -25,23 +25,23 @@ public class Lv5 {
     @Enumerated(value = EnumType.STRING)
     private Lv5Type type;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "annotation_info_id")
     private AnnotationInfo annotationInfo;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "body_info_id")
     private BodyInfo bodyInfo;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "connection_info_id")
     private ConnectionInfo connectionInfo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "level_4_id")
     private Lv4 lv4;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 

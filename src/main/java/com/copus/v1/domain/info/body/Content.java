@@ -18,7 +18,7 @@ public class Content {
     @Lob
     private String contentText;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "body_info_id")
     private BodyInfo bodyInfo;
 

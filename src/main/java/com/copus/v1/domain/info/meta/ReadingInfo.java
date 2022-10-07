@@ -20,7 +20,10 @@ public class ReadingInfo {
     @OneToMany(mappedBy = "readingInfo")
     private List<Reading> readings = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
+
+    @OneToMany(mappedBy = "readingInfo")
+    private List<Reading> reading = new ArrayList<>();
 }

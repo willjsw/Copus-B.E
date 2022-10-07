@@ -21,7 +21,7 @@ public class ChapterInfo {
     @Lob
     private String chapterInfoText;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 

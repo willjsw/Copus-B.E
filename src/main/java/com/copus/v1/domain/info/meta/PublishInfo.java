@@ -47,7 +47,7 @@ public class PublishInfo {
     private String zipsuIndex;
     private String zipsuStart;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 

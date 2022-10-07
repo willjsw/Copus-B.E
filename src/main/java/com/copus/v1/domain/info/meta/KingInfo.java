@@ -27,7 +27,7 @@ public class KingInfo {
     private LocalDate descendDateAD;
     private String descendDateAlias;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 
