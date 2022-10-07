@@ -21,7 +21,7 @@ public class CategoryBody {
     @Enumerated(value = EnumType.STRING)
     private CategoryBodyType type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 

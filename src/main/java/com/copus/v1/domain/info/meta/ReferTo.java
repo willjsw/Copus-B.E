@@ -21,7 +21,7 @@ public class ReferTo {
     @Enumerated(value = EnumType.STRING)
     private ReferToType type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "refer_info_id")
     private ReferInfo referInfo;
 

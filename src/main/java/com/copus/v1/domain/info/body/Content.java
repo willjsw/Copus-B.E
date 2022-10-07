@@ -18,8 +18,8 @@ public class Content {
     @Lob
     private String contentText;
 
-    @OneToOne
-    @JoinColumn(name = "body_info")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "body_info_id")
     private BodyInfo bodyInfo;
 
     public Content(String contentText, BodyInfo bodyInfo) {

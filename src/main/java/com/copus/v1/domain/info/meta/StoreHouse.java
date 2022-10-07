@@ -17,7 +17,7 @@ public class StoreHouse {
 
     private String storeHouseText;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_info_id")
     private StoreInfo storeInfo;
 

@@ -20,12 +20,12 @@ public class TitleInfo {
     @Column(name = "title_info_id")
     private Long id;
 
-    @OneToMany(mappedBy = "titleInfo")
-    private List<Title> titles = new ArrayList<>();
-
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
+
+    @OneToMany(mappedBy = "titleInfo")
+    private List<Title> titles = new ArrayList<>();
 
     public TitleInfo(MetaInfo metaInfo) {
         this.metaInfo = metaInfo;

@@ -34,7 +34,7 @@ public class EraInfo {
     private String day;
     private String zodiacDay;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 }

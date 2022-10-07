@@ -20,12 +20,12 @@ public class StoreInfo {
     @Column(name = "store_info_id")
     private Long id;
 
-    @OneToMany(mappedBy = "storeInfo")
-    private List<StoreHouse> storeHouse = new ArrayList<>();
-
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
+
+    @OneToMany(mappedBy = "storeInfo")
+    private List<StoreHouse> storeHouse = new ArrayList<>();
 
     public StoreInfo(MetaInfo metaInfo) {
         this.metaInfo = metaInfo;

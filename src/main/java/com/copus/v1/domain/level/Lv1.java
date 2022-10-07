@@ -24,17 +24,17 @@ public class Lv1 {
     @Enumerated(value = EnumType.STRING)
     private Lv1Type type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
 
     //메타 정보
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
 
     //해설 정보
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "commentary_info_id")
     private CommentaryInfo commentaryInfo;
 

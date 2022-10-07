@@ -23,9 +23,12 @@ public class CategoryInfo {
     @OneToMany(mappedBy = "categoryInfo")
     private List<Category> categories =new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "meta_info_id")
     private MetaInfo metaInfo;
+
+    @OneToMany(mappedBy = "categoryInfo")
+    private List<Category> category = new ArrayList<>();
 
     public CategoryInfo(MetaInfo metaInfo) {
         this.metaInfo = metaInfo;
