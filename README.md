@@ -11,7 +11,4 @@
 - **프레임워크:** Spring Boot
 - **빌드 도구:** Gradle
 - **데이터베이스:** MariaDB
-- **배포:** Nginx
-
-## 📂 프로젝트 구조
-Copus-B.E/ ├── src/ │ ├── main/ │ │ ├── java/ # Java 소스 코드 │ │ └── resources/ # 설정 파일 및 리소스 │ └── test/ # 테스트 코드 ├── .github/ │ └── ISSUE_TEMPLATE/ # 이슈 템플릿 ├── .gitignore # Git 무시 파일 목록 ├── build.gradle # Gradle 빌드 스크립트 ├── Dockerfile # Docker 설정 파일 ├── gradlew # Gradle Wrapper 실행 파일 (Unix) ├── gradlew.bat # Gradle Wrapper 실행 파일 (Windows) └── settings.gradle # Gradle 설정 파일
+- **배포:** Docker
